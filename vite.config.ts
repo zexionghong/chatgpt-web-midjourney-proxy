@@ -42,51 +42,10 @@ export default defineConfig((env) => {
     plugins: setupPlugins(viteEnv),
     server: {
       host: '0.0.0.0',
-      port: 1002,
+      port: 8090,
       open: false,
-      proxy: {
-        '/api': {
-          target: viteEnv.VITE_APP_API_BASE_URL,
-          changeOrigin: true, // 允许跨域
-          rewrite: path => path.replace('/api/', '/'),
-        },
-        '/mjapi': {
-          target: viteEnv.VITE_APP_API_BASE_URL,
-          changeOrigin: true, // 允许跨域
-          //rewrite: path => path.replace('/api/', '/'),
-        },
-         '/sunoapi': {
-          target: viteEnv.VITE_APP_API_BASE_URL,
-          changeOrigin: true, // 允许跨域  
-        },
-         '/uploads': {
-          target: viteEnv.VITE_APP_API_BASE_URL,
-          changeOrigin: true, // 允许跨域
-          //rewrite: path => path.replace('/api/', '/'),
-        }, 
-        '/openapi': {
-          target: viteEnv.VITE_APP_API_BASE_URL,
-          changeOrigin: true, // 允许跨域
-          //rewrite: path => path.replace('/api/', '/'),
-        },
-        '/luma': {
-          target: viteEnv.VITE_APP_API_BASE_URL,
-          changeOrigin: true, // 允许跨域
-          //rewrite: path => path.replace('/api/', '/'),
-        }, 
-        //
-        '/viggle': {
-          target: viteEnv.VITE_APP_API_BASE_URL,
-          changeOrigin: true, // 允许跨域
-          //rewrite: path => path.replace('/api/', '/'),
-        },
-         '/runwayml': {
-          target: viteEnv.VITE_APP_API_BASE_URL,
-          changeOrigin: true, // 允许跨域
-          //rewrite: path => path.replace('/api/', '/'),
-        },
-        
-      },
+      // 移除后端代理配置，改为直接调用第三方API
+      // proxy配置已移除，现在使用直接API调用
     },
     build: {
       reportCompressedSize: false,

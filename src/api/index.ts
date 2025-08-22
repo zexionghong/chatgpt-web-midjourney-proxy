@@ -54,12 +54,37 @@ export function fetchChatAPIProcess<T = any>(
 }
 
 export function fetchSession<T>() {
-  if (homeStore.myData.isClient)
-  return {"status":"Success","message":"","data":{"isHideServer":false,"isUpload":false,"auth":false,"model":"ChatGPTAPI","amodel":"gpt-4","isApiGallery":false,"cmodels":"","baiduId":"9d5fa7fc2f5fd585aa8fd3010d19be1e","googleId":"","notify":"","disableGpt4":"","isWsrv":"","uploadImgSize":"1","gptUrl":"","theme":"dark","isCloseMdPreview":false}}
-  
-  return post<T>({
-    url: '/session',
-  })
+  // 直接返回客户端配置，不再依赖后端session接口
+  return Promise.resolve({
+    "status": "Success",
+    "message": "",
+    "data": {
+      "isHideServer": false,
+      "isUpload": false,
+      "auth": false,
+      "model": "ChatGPTAPI",
+      "amodel": "gpt-4",
+      "isApiGallery": false,
+      "cmodels": "",
+      "baiduId": "",
+      "googleId": "",
+      "notify": "",
+      "disableGpt4": "",
+      "isWsrv": "",
+      "uploadImgSize": "1",
+      "gptUrl": "",
+      "theme": "dark",
+      "isCloseMdPreview": false,
+      "uploadType": "api",
+      "turnstile": "",
+      "menuDisable": "",
+      "visionModel": "",
+      "systemMessage": "",
+      "customVisionModel": "",
+      "backgroundImage": "",
+      "isHk": false
+    }
+  } as T)
 }
 
 export function fetchVerify<T>(token: string) {
@@ -71,7 +96,8 @@ export function fetchVerify<T>(token: string) {
 
 export * from "./mjapi"
 export * from "./mjsave"
-export * from "./openapi"
+// 使用新的直接API调用，替换原有的后端依赖调用
+export * from "./openapi-direct"
 export * from "./units"
 export * from "./mic"
 export * from "./chat"
