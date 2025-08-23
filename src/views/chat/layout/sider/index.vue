@@ -6,7 +6,7 @@ import List from './List.vue'
 import Footer from './Footer.vue'
 import { useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
-import { PromptStore, SvgIcon } from '@/components/common'
+import { /*PromptStore,*/ SvgIcon } from '@/components/common' // PromptStore功能已移除
 import { t } from '@/locales'
 
 const appStore = useAppStore()
@@ -15,7 +15,7 @@ const chatStore = useChatStore()
 const dialog = useDialog()
 
 const { isMobile } = useBasicLayout()
-const show = ref(false)
+// const show = ref(false) // 提示词商店功能已移除，不再需要此状态
 
 const collapsed = computed(() => appStore.siderCollapsed)
 
@@ -98,10 +98,11 @@ watch(
           <List />
         </div>
         <div class="flex items-center p-4 space-x-4">
+          <!-- 提示词商店按钮已移除 -->
           <div class="flex-1">
-            <NButton block @click="show = true">
+            <!-- <NButton block @click="show = true">
               {{ $t('store.siderButton') }}
-            </NButton>
+            </NButton> -->
           </div>
           <NButton @click="handleClearAll">
             <SvgIcon icon="ri:close-circle-line" />
@@ -114,5 +115,5 @@ watch(
   <template v-if="isMobile">
     <div v-show="!collapsed" class="fixed inset-0 z-40 w-full h-full bg-black/40" @click="handleUpdateCollapsed" />
   </template>
-  <PromptStore v-model:visible="show" />
+  <!-- <PromptStore v-model:visible="show" /> PromptStore功能已移除 -->
 </template>

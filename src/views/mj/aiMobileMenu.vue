@@ -38,10 +38,7 @@ const urouter = useRouter() //
   <div class=" bg-gray-100 dark:bg-[#282832] h-[55px] flex  justify-around  items-center dark:text-white/70 " >
       <!-- ChatGPT聊天和GPTs功能已移除 -->
 
-      <div v-if="!isDisableMenu ( 'realtime')"    class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'openRealtime'}) " >
-        <SvgIcon icon="ri:mic-fill" class="text-3xl"></SvgIcon>
-        <div class="text-[13px]">{{$t('mj.rttab')}}</div>
-      </div>
+      <!-- 实时语音功能已移除 -->
 
 
       <div v-if="!isDisableMenu ( 'draws')" class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showDraw'}) " :class="[goHome=='draw' ? 'active' : '']" >

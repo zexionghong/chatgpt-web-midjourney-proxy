@@ -191,9 +191,15 @@ const selectFile=(input:any)=>{
     </div>
 </div>
 
-<ul class="pt-4" v-html="$t('mjchat.dalleInfo')">
-   
-</ul>
+<div class="pt-4 text-sm text-gray-600 dark:text-gray-400">
+  <p class="mb-2">{{ $t('common.note') }}：</p>
+  <ul class="list-disc list-inside space-y-1 ml-4">
+    <li>{{ $t('mjchat.dalleNote1') }}</li>
+    <li>{{ $t('mjchat.dalleNote2') }}</li>
+    <li>{{ $t('mjchat.dalleNote3') }}</li>
+    <li v-if="$i18n.locale === 'zh-CN'">{{ $t('mjchat.dalleNote4') }}</li>
+  </ul>
+</div>
 
 <input type="file"  @change="selectFile"  ref="fsRef" style="display: none" accept="image/jpeg, image/jpg, image/png, image/gif"/>
 

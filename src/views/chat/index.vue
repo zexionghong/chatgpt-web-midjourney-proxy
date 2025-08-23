@@ -25,7 +25,7 @@ import {
   gptsUlistStore,
   homeStore,
   useChatStore,
-  usePromptStore,
+  // usePromptStore, // 提示词商店功能已移除
 } from "@/store";
 import {
   chatSetting,
@@ -36,9 +36,9 @@ import {
 } from "@/api";
 import { t } from "@/locales";
 import drawListVue from "../mj/drawList.vue";
-import aiGPT from "../mj/aiGpt.vue";
+// import aiGPT from "../mj/aiGpt.vue"; // GPTs功能已移除
 import AiSiderInput from "../mj/aiSiderInput.vue";
-import aiGptInput from "../mj/aiGptInput.vue";
+// import aiGptInput from "../mj/aiGptInput.vue"; // GPTs功能已移除
 import AiTextSetting from "../mj/aiTextSetting.vue";
 import { useUserStore } from "@/store";
 
@@ -71,11 +71,12 @@ const prompt = ref<string>("");
 const loading = ref<boolean>(false);
 const inputRef = ref<Ref | null>(null);
 
-// 添加PromptStore
-const promptStore = usePromptStore();
+// 添加PromptStore - 提示词商店功能已移除
+// const promptStore = usePromptStore();
 
 // 使用storeToRefs，保证store修改后，联想部分能够重新渲染
-const { promptList: promptTemplate } = storeToRefs<any>(promptStore);
+// const { promptList: promptTemplate } = storeToRefs<any>(promptStore);
+const promptTemplate = ref([]); // 空的提示词模板
 
 // 未知原因刷新页面，loading 状态不会重置，手动重置
 dataSources.value.forEach((item, index) => {
@@ -694,7 +695,8 @@ const ychat = computed(() => {
     </main>
     <footer :class="footerClass" v-if="local !== 'draw'">
       <div class="w-full max-w-screen-xl m-auto">
-        <aiGptInput
+        <!-- aiGptInput组件已移除，GPTs功能不再可用 -->
+        <!-- <aiGptInput
           v-if="
             ['gpt-4-vision-preview', 'gpt-3.5-turbo-16k'].indexOf(
               gptConfigStore.myData.model
@@ -704,8 +706,8 @@ const ychat = computed(() => {
           :disabled="buttonDisabled"
           :searchOptions="searchOptions"
           :renderOption="renderOption"
-        />
-        <div class="flex items-center justify-between space-x-2" v-else>
+        /> -->
+        <div class="flex items-center justify-between space-x-2">
           <!-- 
           <HoverButton v-if="!isMobile" @click="handleClear">
             <span class="text-xl text-[#4f555e] dark:text-white">
@@ -760,6 +762,6 @@ const ychat = computed(() => {
   </div>
 
   <drawListVue />
-  <aiGPT @finished="loading = false" />
+  <!-- <aiGPT @finished="loading = false" /> GPTs功能已移除 -->
   <AiSiderInput v-if="isMobile" :button-disabled="false" />
 </template>

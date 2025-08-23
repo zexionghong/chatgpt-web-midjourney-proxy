@@ -1,6 +1,6 @@
 import type { App } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import { setupPageGuard } from './permission'
 import mjlayout from '@/views/mj/layout.vue'
 import sunoLayout from '@/views/suno/layout.vue'
@@ -59,19 +59,6 @@ const routes: RouteRecordRaw[] = [
     ],
   },
 
-  {
-    path: '/dance',
-    name: 'dance',
-    component: lumaLayout,
-    redirect: '/dance/index',
-    children: [
-      {
-        path: '/dance/:uuid?',
-        name: 'dance',
-        component: () => import('@/views/viggle/dance.vue'),
-      },
-    ],
-  },
 
   {
     path: '/wav',
@@ -114,7 +101,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 export const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
   scrollBehavior: () => ({ left: 0, top: 0 }),
 })
